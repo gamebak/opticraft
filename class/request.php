@@ -20,7 +20,7 @@ class Request
 	*
 	* @return string
 	*/
-	public static function fetch( $url, $post = false, $refferal = false)
+	public function fetch( $url, $post = false, $refferal = false)
 	{
 			$ch = curl_init();
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
