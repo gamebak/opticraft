@@ -14,6 +14,16 @@ class Template
 	*/
 	public function renderHead()
 	{
-		return '<html><head><title>'.$this->title.'</title></head>';
+		return '<html><head><title>'.$this->title.'</title></head><body>';
+	}
+
+	/**
+	 * Render html enclosure
+	 * 
+	 * @return string
+	 */
+	public function renderFooter()
+	{
+		return '</body></html>';
 	}
 }
