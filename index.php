@@ -16,6 +16,12 @@ $template->cssHref[] = "css/styles.css";
 
 echo $template->cssRender();
 
+echo $template->renderHeader();
+
+
+echo $template->mainContainer();
+echo $template->secondContainer();
+
 /**
  * Load javascript files dynamically
  */
@@ -29,8 +35,6 @@ $template->scriptSrc[] = "js/bootstrap.min.js";
  */
 echo $template->scriptsRender();
 
-echo $template->renderHeader();
-echo $template->mainContainer();
-echo $template->secondContainer();
+
 echo $template->renderFooter();
 
