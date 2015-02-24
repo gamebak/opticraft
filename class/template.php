@@ -112,7 +112,7 @@ class Template
           
           <form class="col-lg-12" action="compareLink.php" method="post">
             <div class="input-group" style="width:340px;text-align:center;margin:0 auto;">
-            <input class="form-control input-lg" name="urlInput" placeholder="Enter your URL" type="text">
+            <input class="form-control input-lg" name="urlInput" value="http://" type="text">
               <span class="input-group-btn"><button class="btn btn-lg btn-primary" type="button">OK</button></span>
             </div>
           </form>
