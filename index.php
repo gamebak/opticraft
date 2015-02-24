@@ -14,8 +14,6 @@ $template->cssHref[] = "css/bootstrap.min.css";
 $template->cssHref[] = "//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css";
 $template->cssHref[] = "css/styles.css";
 
-echo $template->cssRender();
-
 echo $template->renderHeader();
 
 

@@ -38,7 +38,9 @@ class Template
 		<meta charset="utf-8">
 		<title>'.$this->title.'</title>
 		<meta name="generator" content="Bootply" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"></head><body>';
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		'.$this->cssRender().'
+		</head><body>';
 
 		return $tmp;
 	}
