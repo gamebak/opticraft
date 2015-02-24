@@ -26,39 +26,21 @@ class Template
 	public $cssHref = array();
 
 	/**
-	 * Render the html head
+	 * Render the html header
 	 * 
 	 * @return string
 	*/
-	public function renderHead()
+	public function renderHeader()
 	{
 		$tmp = '<!DOCTYPE html>
 		<html lang="en"><head>
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 		<meta charset="utf-8">
-		<title>'.$this->title.'</title>';
-
-		// Am facut spatierea asta ca sa faci tu "hack-ul" pentru partea de css
-		$tmp.='<meta name="generator" content="Bootply" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<link href="css/bootstrap.min.css" rel="stylesheet">
-		<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
-		<!--[if lt IE 9]>
-			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-		<![endif]-->
-		<link href="css/styles.css" rel="stylesheet"></head><body>';
+		<title>'.$this->title.'</title>
+		<meta name="generator" content="Bootply" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"></head><body>';
 
 		return $tmp;
-	}
-
-	/**
-	 * Render html enclosure
-	 * 
-	 * @return string
-	 */
-	public function renderFooter()
-	{
-		return '</body></html>';
 	}
 
 	/**
@@ -82,13 +64,21 @@ class Template
 	}
 
 	/**
-	 * @To Do - Aceeasi logica precum scriptsRender(), doar ca trebuie sa pui link href, va fi in header (putin mai complicat)
-	 * @return [type] [description]
+	 * Load css files dynamically and render them in page
+	 *
+	 * @return string|void    String with css code
 	 */
 	public function cssRender()
 	{
 		if(count($this->cssHref) > 0 )
 		{
+			$tmpString = '';
+			for($i=0; $i<count($this->cssHref); $i++)
+			{
+				$tmpString.= '<link href="'.$this->cssHref[$i].'" rel="stylesheet">';
+			}
+
+			return $tmpString;
 
 		}
 	}
@@ -183,5 +173,15 @@ class Template
 	        </div>
 	  </div>
 	</div>';
+	}
+
+	/**
+	 * Render html enclosure
+	 * 
+	 * @return string
+	 */
+	public function renderFooter()
+	{
+		return '</body></html>';
 	}
 }

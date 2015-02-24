@@ -1,26 +1,22 @@
 
-
-
-
-
-
-	
-		
-
-
-
 <?php
 require_once("config.php");
 
 // *Init template class
 $template = new Template;
 
-/**
- * Trebuie sa creezi array-ul cssHref inainte de renderHead ( pentru ca acolo sunt afisate, trebuie incarcate inainte )
- */
-
 $template->title="Opticraft";
-echo $template->renderHead();
+
+/**
+ * Load css files dynamically
+ */
+$template->cssHref[] = "css/bootstrap.min.css";
+$template->cssHref[] = "//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css";
+$template->cssHref[] = "css/styles.css";
+
+echo $template->cssRender();
+
+echo $template->renderHeader();
 
 
 echo $template->mainContainer();
