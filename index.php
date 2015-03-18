@@ -16,9 +16,7 @@ $template->cssHref[] = "css/styles.css";
 
 echo $template->renderHeader();
 
-
 echo $template->mainContainer();
-echo $template->secondContainer();
 
 /**
  * Load javascript files dynamically
