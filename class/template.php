@@ -85,11 +85,14 @@ class Template
 		}
 	}
 
-	public function renderError()
+	/**
+	 * Error alert
+	 * @param  string $errMsg
+	 * @return string
+	 */
+	public function renderError($errMsg)
 	{
-		return '<div class="alert alert-danger" role="alert">
-				  <strong>Error!</strong> Please insert a valid URL.
-				</div>';
+		return '<div class="alert alert-danger" role="alert"><strong>Error!</strong> '.$errMsg.'</div>';
 	}
 
 	/**
@@ -116,11 +119,12 @@ class Template
           <p class="lead">A simple and efficient optimization tool for your web-site</p>
           
           <br><br><br>
-          
-          <form class="col-lg-12" action="compareLink.php" method="post">
+          <div class="result"></div>
+
+          <form class="col-lg-12">
             <div class="input-group" style="width:340px;text-align:center;margin:0 auto;">
-            <input class="form-control input-lg" name="urlInput" value="http://" type="text">
-              <span class="input-group-btn"><button class="btn btn-lg btn-primary" type="submit">OK</button></span>
+            <input class="form-control input-lg url-opticraft-input" name="urlInput" value="http://" type="text">
+              <span class="input-group-btn"><button class="btn btn-lg btn-primary btn-opticraft-url-check" type="submit">OK</button></span>
             </div>
           </form>
         </div>

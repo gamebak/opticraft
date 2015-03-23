@@ -23,6 +23,7 @@ echo $template->mainContainer();
  */
 $template->scriptSrc[] = "//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js";
 $template->scriptSrc[] = "js/bootstrap.min.js";
+$template->scriptSrc[] = "js/app.js";
 
 /**
  * This will output:

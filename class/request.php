@@ -51,4 +51,18 @@ class Request
 			
 			return $strResponse;
 	}
-}
+
+	/**
+	 * Check if url is valid
+	 * @param  string $url
+	 * @return boolean
+	 */
+	public function checkUrl($url)
+	{
+		if(preg_match('~^https?://([0-9a-zA-Z]+\.[a-z]+)|([0-255]\.[0-255]\.[0-255]\.[0-255])$~', $url))
+			return true;
+
+		return false;
+	}
+
+}	
