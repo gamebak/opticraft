@@ -1,6 +1,7 @@
 <?php
 require_once("config.php");
 
+$template = new Template;
 $page = '';
 
 if(isset($_GET['page'])) $page = $_GET['page'];

@@ -58,7 +58,7 @@ class Template
 
 			for($i=0; $i<count($this->scriptSrc); $i++)
 			{
-				$tmpString.= '<script src="'.$this->scriptSrc[$i].'"><script>';
+				$tmpString.= '<script src="'.$this->scriptSrc[$i].'"></script>';
 			}
 
 			return $tmpString;
@@ -119,17 +119,21 @@ class Template
           <p class="lead">A simple and efficient optimization tool for your web-site</p>
           
           <br><br><br>
-          <div class="result"></div>
+          
 
-          <form class="col-lg-12">
+          <div class="col-lg-12">
             <div class="input-group" style="width:340px;text-align:center;margin:0 auto;">
             <input class="form-control input-lg url-opticraft-input" name="urlInput" value="http://" type="text">
               <span class="input-group-btn"><button class="btn btn-lg btn-primary btn-opticraft-url-check" type="submit">OK</button></span>
             </div>
-          </form>
+          </div>
         </div>
         
-      </div> <!-- /row -->
+      </div> 
+		<div class="row">
+			<div class="result col-lg-12 text-center v-center"></div>
+		</div>
+      <!-- /row -->
   	  '.$this->renderSocial().'
   
   	<br><br><br><br><br>
