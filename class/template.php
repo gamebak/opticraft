@@ -123,8 +123,8 @@ class Template
 
           <div class="col-lg-12">
             <div class="input-group" style="width:340px;text-align:center;margin:0 auto;">
-            <input class="form-control input-lg url-opticraft-input" name="urlInput" value="http://" type="text">
-              <span class="input-group-btn"><button class="btn btn-lg btn-primary btn-opticraft-url-check" type="submit">OK</button></span>
+            	<input class="form-control input-lg url-opticraft-input" name="urlInput" value="http://" type="text">
+              	<span class="input-group-btn"><button class="btn btn-lg btn-primary btn-opticraft-url-check" type="submit">OK</button></span>
             </div>
           </div>
         </div>
