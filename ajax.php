@@ -1,8 +1,11 @@
 <?php
 require_once("config.php");
+require_once("class/scraping.php");
 
 $template = new Template;
+$scrape = new Scrape;
 $page = '';
+
 
 if(isset($_GET['page'])) $page = $_GET['page'];
 
@@ -22,14 +25,11 @@ if($page == 'url_check')
 
 	$data = $request->fetch($_POST['url_post_param']);
 
-	$html = htmlentities($data);
-	$matchcss = preg_match('~href=\'.*\.css\'~', $data, $matches);
-	print_r($matches);
-	$matchimg = preg_match('~src=".*\.png"~',$data,$matches);
-	print_r($matches);
+	//momentan returneaza toate fisierele gasite, inclusiv pe cele externe
+	var_dump($scrape->scrapeCss($data));
+	var_dump($scrape->scrapeJs($data));
+	var_dump($scrape->scrapeImg($data));
 
-	
-	
 }
 // else case
 else
