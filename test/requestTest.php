@@ -3,6 +3,12 @@ require_once("../config.php");
 
 
 $r = new Request;
-$data = $r->fetch();
+$scrape = new Scrape;
 
-var_dump($data);
+/* Test page */
+$data = $r->fetch("http://skyul.com");
+$arrImg = $scrape->scrapeImg($data);
+
+var_dump($arrImg);
+
+

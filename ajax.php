@@ -1,6 +1,5 @@
 <?php
 require_once("config.php");
-require_once("class/scraping.php");
 
 $template = new Template;
 $scrape = new Scrape;
