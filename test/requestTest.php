@@ -9,6 +9,6 @@ $scrape = new Scrape;
 $data = $r->fetch("http://skyul.com");
 $arrImg = $scrape->scrapeImg($data);
 
-//var_dump($arrImg);
+var_dump($arrImg);
 
 

@@ -23,7 +23,7 @@ if($page == 'url_check')
 	";*/
 
 	$data = $request->fetch($_POST['url_post_param']);
-	$scrape->domainName = strstr($_POST['url_post_param'], '.', true);
+
 	//momentan returneaza toate fisierele gasite, inclusiv pe cele externe
 	var_dump($scrape->scrapeCss($data));
 	var_dump($scrape->scrapeJs($data));
