@@ -22,7 +22,10 @@ if($page == 'url_check')
 		- figure out css/js/img urls (internal)
 	";*/
 
+	$url = $_POST['url_post_param'];
 	$data = $request->fetch($_POST['url_post_param']);
+	$scrape->domainName = $scrape->get_domain($url);
+
 
 	//momentan returneaza toate fisierele gasite, inclusiv pe cele externe
 	var_dump($scrape->scrapeCss($data));

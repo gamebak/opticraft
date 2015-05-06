@@ -22,51 +22,20 @@ class Scrape
 	public $domainName = '';
 
 	/**
-	* Scrape the website for css files
-	*
-	* @param string $data content of the website
-	*
-	* @return string
-	*/	
-	public function scrapeCss($data) 
+	 * Gets the domain name from an url
+	 * @param string 		full url
+	 * @return string|bool 	return domain name
+	 */
+	public function get_domain($url)
 	{
-		$match = preg_match_all('~href=\'.*\.css\'~', $data, $arrayCss);
-		return $arrayCss;
+		$pieces = parse_url($url);
+	  	$domain = isset($pieces['host']) ? $pieces['host'] : '';
+	  	if (preg_match('/(?P<domain>[a-z0-9][a-z0-9\-]{1,63}\.[a-z\.]{2,6})$/i', $domain, $regs)) 
+	  	{
+	    	return $regs['domain'];
+	  	}
+		return false;
 	}	
-
-	/**
-	* Scrape the website for javascript files
-	*
-	* @param string $data content of the website
-	*
-	* @return string
-	*/	
-	public function scrapeJs($data) 
-	{
-		$match = preg_match_all('~src=".*\.js"~', $data, $arrayJs);
-		return $arrayJs;
-	}	
-
-	/**
-	* Scrape the website for images
-	*
-	* @param string $data content of the website
-	*
-	* @return boolean|string  		returns false if nothing found
-	*/	
-	public function scrapeImg($data) 
-	{
-		$match = preg_match_all('~src="(.*?(\.jpg|\.gif|\.png|\.jpeg|\.bmp))"~', $data, $arrayImg);
-		// no results, or no images found
-		if(!$match || !isset($arrayImg[1][0]))
-			return false;
-
-		$arrFilteredResults = $arrayImg[1];
-
-		// cleanup
-		unset($arrayImg, $match);
-		return $arrFilteredResults;
-	}
 
 	/**
 	 * Filter elements in array based on the domain path
@@ -84,11 +53,15 @@ class Scrape
 
 		for($i = 0; $i<count($arr); $i++)
 		{
+			//convert each array element into string
+			$str = (string)$arr[$i];
 			//if external url, it must start with http
-			if(substr($arr[$i], 0,4) == 'http')
+			if(substr($str, 0, 4) == 'http')
 			{
 				// check if is $this->domainName the main url
-				
+				if($this->domainName==$this->get_domain($str))
+					$arrValidLocal[] = $arr[$i];
+
 			}
 			else
 			{
@@ -100,5 +73,51 @@ class Scrape
 		// return only valid ressources that are local, without complete domain path in url
 		return $arrValidLocal;
 	}
+
+
+	/**
+	* Scrape the website for css files
+	*
+	* @param string $data content of the website
+	*
+	* @return string
+	*/	
+	public function scrapeCss($data) 
+	{
+		$match = preg_match_all('~href=\'.*\.css\'~', $data, $arrayCss);
+		return $this->filterLocalStrings($arrayCss[0]);
+		//return $arrayCss[0];
+	}	
+
+	/**
+	* Scrape the website for javascript files
+	*
+	* @param string $data content of the website
+	*
+	* @return string
+	*/	
+	public function scrapeJs($data) 
+	{
+		$match = preg_match_all('~src=".*\.js"~', $data, $arrayJs);
+		return $this->filterLocalStrings($arrayJs[0]);
+		//return $arrayJs[0];
+	}	
+
+	/**
+	* Scrape the website for images
+	*
+	* @param string $data content of the website
+	*
+	* @return boolean|string  		returns false if nothing found
+	*/	
+	public function scrapeImg($data) 
+	{
+		$match = preg_match_all('~src="(.*?(\.jpg|\.gif|\.png|\.jpeg|\.bmp))"~', $data, $arrayImg);
+		return $this->filterLocalStrings($arrayImg[0]);
+		//return $arrayImg[0];
+	}
+
+	
+
 }	
 
