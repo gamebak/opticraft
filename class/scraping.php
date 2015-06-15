@@ -55,10 +55,14 @@ class Scrape
 		{
 			//convert each array element into string
 			$str = (string)$arr[$i];
+
 			//echo $str;
 			//if external url, it must start with http
 			/*if(substr($str, 0, 4) == 'http')
 				echo "am gasit un link";
+
+			//if external url, it must start with http
+			if(substr($str, 0, 4) == 'http')
 			{
 				// check if is $this->domainName the main url
 				if($this->domainName==$this->get_domain($str))
@@ -69,11 +73,18 @@ class Scrape
 			{
 				//not external, then add it to valid local array
 				$arrValidLocal[] = $arr[$i];
+
 			}*/
 		}
 
 		// return only valid ressources that are local, without complete domain path in url
 		//return $arrValidLocal;
+
+			}
+		}
+
+		// return only valid ressources that are local, without complete domain path in url
+		return $arrValidLocal;
 	}
 
 
@@ -115,6 +126,7 @@ class Scrape
 	public function scrapeImg($data) 
 	{
 		$match = preg_match_all('~src="(.*?(\.jpg|\.gif|\.png|\.jpeg|\.bmp).*)"~', $data, $arrayImg);
+
 		return $this->filterLocalStrings($arrayImg[0]);
 		//return $arrayImg[0];
 	}

@@ -30,6 +30,7 @@ if($page == 'url_check')
 	//var_dump($scrape->scrapeJs($data));
 	//var_dump($scrape->scrapeImg($data));
 
+
 }
 // else case
 else

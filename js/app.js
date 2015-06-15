@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	
+
 	$("#urlInput").keydown(function(event) {
     	if(event.keyCode == 13){
            $(".btn-opticraft-url-check").click();
@@ -14,5 +14,4 @@ $(document).ready(function(){
   			$( ".result" ).html(data);
 		});
 	});
-
 });
