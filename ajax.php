@@ -27,8 +27,8 @@ if($page == 'url_check')
 	$scrape->domainName = $scrape->get_domain($url);
 
 	var_dump($scrape->scrapeCss($data));
-	//var_dump($scrape->scrapeJs($data));
-	//var_dump($scrape->scrapeImg($data));
+	var_dump($scrape->scrapeJs($data));
+	var_dump($scrape->scrapeImg($data));
 
 
 }

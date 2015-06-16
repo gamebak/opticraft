@@ -24,8 +24,8 @@ class Scrape
 
 	/**
 	 * Gets the domain name from an url
-	 * @param string 		full url
-	 * @return string|bool 	return domain name
+	 * @param string 	full url
+	 * @return string 	return domain name
 	 */
 	public function get_domain($url)
 	{
@@ -57,31 +57,20 @@ class Scrape
 			//convert each array element into string
 			$str = (string)$arr[$i];
 
-			//echo $str;
-			//if external url, it must start with http
-			/*if(substr($str, 0, 4) == 'http')
-				echo "am gasit un link";
-
-			//if external url, it must start with http
-			if(substr($str, 0, 4) == 'http')
-			{
+			//if external url, it must have http somewhere within the name
+			if (strpos($str, "http://") !== false || strpos($str, "https://") !== false) {
 				// check if is $this->domainName the main url
-				if($this->domainName==$this->get_domain($str))
-					$arrValidLocal[] = $arr[$i];
-
+				
+				if($this->get_domain($str) == $this->domainName)
+					$arrValidLocal[] = $str;				
 			}
 			else
 			{
 				//not external, then add it to valid local array
-				$arrValidLocal[] = $arr[$i];
-
-			}*/
-		}
-
-		// return only valid ressources that are local, without complete domain path in url
-		//return $arrValidLocal;
+				$arrValidLocal[] = $str;
 
 			}
+
 		}
 
 		// return only valid ressources that are local, without complete domain path in url
@@ -98,9 +87,8 @@ class Scrape
 	*/	
 	public function scrapeCss($data) 
 	{
-		$match = preg_match_all('~href=\'.*\.css.*\'~', $data, $arrayCss);
-		//return $this->filterLocalStrings($arrayCss[0]);
-		return $arrayCss[0];
+		$match = preg_match_all('~(?<=href=(\"|\'))[^(\"|\')]+\.css~', $data, $arrayCss);
+		return $this->filterLocalStrings($arrayCss[0]);
 	}	
 
 	/**
@@ -112,9 +100,8 @@ class Scrape
 	*/	
 	public function scrapeJs($data) 
 	{
-		$match = preg_match_all('~src=".*\.js.*"~', $data, $arrayJs);
+		$match = preg_match_all('~(?<=src=(\"|\'))[^(\"|\')]+\.js~', $data, $arrayJs);
 		return $this->filterLocalStrings($arrayJs[0]);
-		//return $arrayJs[0];
 	}	
 
 	/**
@@ -126,10 +113,9 @@ class Scrape
 	*/	
 	public function scrapeImg($data) 
 	{
-		$match = preg_match_all('~src="(.*?(\.jpg|\.gif|\.png|\.jpeg|\.bmp).*)"~', $data, $arrayImg);
+		$match = preg_match_all('~(?<=src=(\"|\'))[^(\"|\')]+\.(jpg|gif|png|jpeg|bmp)~', $data, $arrayImg);
 
 		return $this->filterLocalStrings($arrayImg[0]);
-		//return $arrayImg[0];
 	}
 
 	
