@@ -2,6 +2,7 @@
 /**
 * Scrape website for css&javascript files and images using regex
 */
+
 class Scrape 
 {
 	//test
@@ -68,9 +69,7 @@ class Scrape
 			{
 				//not external, then add it to valid local array
 				$arrValidLocal[] = $str;
-
 			}
-
 		}
 
 		// return only valid ressources that are local, without complete domain path in url
