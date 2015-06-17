@@ -26,15 +26,9 @@ if($page == 'url_check')
 	$data = $request->fetch($_POST['url_post_param']);
 	$scrape->domainName = $scrape->get_domain($url);
 
-	//var_dump($scrape->scrapeCss($data));
-	$arr = $scrape->scrapeCss($data);
-
-	if(is_array($arr)) {
-	foreach ($arr as $value) {
-		echo $request->curl_get_file_size($value);
-	}}
-	//var_dump($scrape->scrapeJs($data));
-	//var_dump($scrape->scrapeImg($data));
+	var_dump($scrape->scrapeCss($data));
+	var_dump($scrape->scrapeJs($data));
+	var_dump($scrape->scrapeImg($data));
 
 
 }
