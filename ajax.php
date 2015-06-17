@@ -31,7 +31,9 @@ if($page == 'url_check')
 	//var_dump($scrape->scrapeJs($data));
 	//var_dump($scrape->scrapeImg($data));
 
-	echo $size->get_size($scrape->scrapeCss($data),$url);
+	var_dump($size->get_size($scrape->scrapeCss($data),$url,$request));
+	var_dump($size->get_size($scrape->scrapeJs($data),$url,$request));
+	var_dump($size->get_size($scrape->scrapeImg($data),$url,$request));
 
 
 }
