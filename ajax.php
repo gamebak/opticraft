@@ -3,6 +3,7 @@ require_once("config.php");
 
 $template = new Template;
 $scrape = new Scrape;
+$size = new Size;
 $page = '';
 
 
@@ -26,9 +27,11 @@ if($page == 'url_check')
 	$data = $request->fetch($_POST['url_post_param']);
 	$scrape->domainName = $scrape->get_domain($url);
 
-	var_dump($scrape->scrapeCss($data));
-	var_dump($scrape->scrapeJs($data));
-	var_dump($scrape->scrapeImg($data));
+	//var_dump($scrape->scrapeCss($data));
+	//var_dump($scrape->scrapeJs($data));
+	//var_dump($scrape->scrapeImg($data));
+
+	echo $size->get_size($scrape->scrapeCss($data),$url);
 
 
 }

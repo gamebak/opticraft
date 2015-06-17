@@ -4,7 +4,6 @@
 */
 class Scrape 
 {
-	//test
 
 	/**
 	 * @var array $arrayCss contains the path to all the css files 
